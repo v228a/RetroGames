@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма регистрации и входа</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="loginForm">
+            <h2>Вход</h2>
+            <input type="text" placeholder="Имя пользователя" required>
+            <input type="password" placeholder="Пароль" required>
+            <button type="submit">Войти</button>
+            <p>Нет аккаунта? <a href="#registerForm">Зарегистрироваться</a></p>
+        </form>
+
+        <form class="form" id="registerForm">
+            <h2>Регистрация</h2>
+            <input type="text" placeholder="Имя пользователя" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Пароль" required>
+            <button type="submit">Зарегистрироваться</button>
+            <p>Уже есть аккаунт? <a href="#loginForm">Войти</a></p>
+        </form>
+    </div>
+    <script>
+        document.querySelectorAll('a').forEach(link => {
+
+            link.addEventListener('click', function(e) {
+
+                e.preventDefault();
+
+                const targetForm = document.querySelector(this.getAttribute('href'));
+
+                document.querySelectorAll('.form').forEach(form => {
+
+                    form.style.display = 'none'; // Скрыть все формы
+
+                });
+
+                targetForm.style.display = 'block'; // Показать целевую форму
+
+            });
+
+        });
+    </script>
+</body>
+</html>
